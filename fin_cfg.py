@@ -7,7 +7,7 @@ def creation_texte_fin(hostname, id, as_rp, list_interfaces, ip_version, file):
     '''
     if ip_version == 4 :
         ecriture_fichier(file, "router ospf " + hostname[1:] + "\n")
-        ecriture_fichier(file, " router-id " + id + "\n!\n")
+        ecriture_fichier(file, " mpls ldp autoconfig\n!\n")
     else :
         print("ERROR : improper IP version")
         return

@@ -72,14 +72,14 @@ for router in data["router"]:
 for router in list_routers:
     for interface in router.interfaces:
         if interface.name == "Loopback0":
-            interface.ip_address = automatic_ip.generer_ip_loopback(router)
+            interface.ip_address = automatic_ip.generer_ip_loopback_4(router)
         if interface.connected_to != None and interface.name != "Loopback0":
             a = 0
             router2 = list_routers[a]
             while router2.hostname != interface.connected_to and a < len(list_routers):
                 a += 1
                 router2 = list_routers[a]
-            interface.ip_address = automatic_ip.generer_ip(router,router2)
+            interface.ip_address = automatic_ip.generer_ip_4(router,router2)
 
 
 # affiche la liste des routeurs, leurs interfaces et leurs voisins

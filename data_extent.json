@@ -13,7 +13,7 @@
                 {
                     "name" : "Loopback0",
                     "routing_protocols" : ["OSPF","iBGP"],
-                    "area" : null,
+                    "area" : "0",
                     "connected_to" : null
                 },
                 {
@@ -47,7 +47,7 @@
                 {
                     "name" : "Loopback0",
                     "routing_protocols" : ["OSPF","iBGP"],
-                    "area" : null,
+                    "area" : "0",
                     "connected_to" : null
                 },
                 {
@@ -81,7 +81,7 @@
                 {
                     "name" : "Loopback0",
                     "routing_protocols" : ["OSPF","iBGP"],
-                    "area" : null,
+                    "area" : "0",
                     "connected_to" : null
                 },
                 {
@@ -109,7 +109,7 @@
                 {
                     "name" : "Loopback0",
                     "routing_protocols" : ["OSPF","iBGP"],
-                    "area" : null,
+                    "area" : "0",
                     "connected_to" : null
                 },
                 {
@@ -137,7 +137,7 @@
                 {
                     "name" : "Loopback0",
                     "routing_protocols" : ["OSPF","iBGP"],
-                    "area" : null,
+                    "area" : "0",
                     "connected_to" : null
                 },
                 {
