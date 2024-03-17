@@ -27,9 +27,6 @@ def creation_texte_debut(hostname, ip_version, file):
         ecriture_fichier(file, "no ip domain lookup\nipv6 unicast-routing\nipv6 cef\n")
     elif ip_version == 4 :
         ecriture_fichier(file, "no ip domain lookup\nno ipv6 cef\n")
-    else :
-        print("ERROR : improper IP version")
-        return
     
     ecriture_fichier(file,"!\n"*2)
 

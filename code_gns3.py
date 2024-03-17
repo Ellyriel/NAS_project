@@ -5,12 +5,16 @@ import debut_cfg
 import fin_cfg
 import automatic_ip
 import os
+import sys
 
 with open("data_extent.json") as file:
     data = json.load(file)
     
 ip_version = int(data["ip_version"])
 
+if ip_version != 4 and ip_version != 6 :
+    print("ERROR : improper IP version")
+    sys.exit()
 
 # classe définissant un routeur
 class Router :
@@ -72,14 +76,20 @@ for router in data["router"]:
 for router in list_routers:
     for interface in router.interfaces:
         if interface.name == "Loopback0":
-            interface.ip_address = automatic_ip.generer_ip_loopback(router)
+            if ip_version == 4 :
+                interface.ip_address = automatic_ip.generer_ip_loopback_4(router)
+            elif ip_version == 6 :
+                interface.ip_address = automatic_ip.generer_ip_loopback_6(router)
         if interface.connected_to != None and interface.name != "Loopback0":
             a = 0
             router2 = list_routers[a]
             while router2.hostname != interface.connected_to and a < len(list_routers):
                 a += 1
                 router2 = list_routers[a]
-            interface.ip_address = automatic_ip.generer_ip(router,router2)
+            if ip_version == 4 :
+                interface.ip_address = automatic_ip.generer_ip_4(router,router2)
+            elif ip_version == 6 :
+                interface.ip_address = automatic_ip.generer_ip_6(router,router2)
 
 
 # affiche la liste des routeurs, leurs interfaces et leurs voisins
