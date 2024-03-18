@@ -39,5 +39,5 @@ def generer_ip_4(router1,router2):
     return address_ip
 
 def generer_ip_loopback_4(router):
-    address_ip = "127.0.0."+ router.hostname[1:] + " 255.255.255.255"
+    address_ip = "192.168." + router.hostname[1:] + "." + router.hostname[1:] + " 255.255.255.255"
     return address_ip
