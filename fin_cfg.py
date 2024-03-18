@@ -8,8 +8,11 @@ def creation_texte_fin(hostname, id, as_rp, list_interfaces, ip_version, file):
     if ip_version == 4 :
         if as_rp == "OSPF" :
             ecriture_fichier(file, "router ospf " + hostname[1:] + "\n")
-            ecriture_fichier(file, " router-id " + id + "\n!\n")
-        ecriture_fichier(file, "ip forward-protocol nd\n" + "!\n"*2)
+            ecriture_fichier(file, " router-id " + id + "\n")
+            for interface in list_interfaces :
+                if interface.routing_protocols != None and "eBGP" in interface.routing_protocols :
+                    ecriture_fichier(file, " passive-interface " + interface.name + "\n")
+        ecriture_fichier(file, "!\nip forward-protocol nd\n" + "!\n"*2)
         ecriture_fichier(file, "no ip http server\nno ip http secure-server\n")
     elif ip_version == 6 :
         ecriture_fichier(file, "ip forward-protocol nd\n" + "!\n"*2)

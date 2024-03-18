@@ -18,7 +18,7 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "routing_protocols" : ["OSPF","iBGP"],
+                    "routing_protocols" : ["OSPF","iBGP","LDP"],
                     "area" : "0",
                     "connected_to" : "R2"
                 },
@@ -52,19 +52,19 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "routing_protocols" : ["OSPF","iBGP"],
+                    "routing_protocols" : ["OSPF","iBGP","LDP"],
                     "area" : "0",
                     "connected_to" : "R1"
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "routing_protocols" : ["OSPF","iBGP"],
+                    "routing_protocols" : ["OSPF","iBGP","LDP"],
                     "area" : "0",
                     "connected_to" : "R3"
                 },
                 {
                     "name" : "GigabitEthernet3/0",
-                    "routing_protocols" : ["OSPF","iBGP"],
+                    "routing_protocols" : ["OSPF","iBGP","LDP"],
                     "area" : "0",
                     "connected_to" : "R4"
                 }
@@ -86,13 +86,13 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "routing_protocols" : ["OSPF","iBGP"],
+                    "routing_protocols" : ["OSPF","iBGP","LDP"],
                     "area" : "0",
                     "connected_to" : "R5"
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "routing_protocols" : ["OSPF","iBGP"],
+                    "routing_protocols" : ["OSPF","iBGP","LDP"],
                     "area" : "0",
                     "connected_to" : "R2"
                 }
@@ -114,13 +114,13 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "routing_protocols" : ["OSPF","iBGP"],
+                    "routing_protocols" : ["OSPF","iBGP","LDP"],
                     "area" : "0",
                     "connected_to" : "R2"
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "routing_protocols" : ["OSPF","iBGP"],
+                    "routing_protocols" : ["OSPF","iBGP","LDP"],
                     "area" : "0",
                     "connected_to" : "R5"
                 }
@@ -142,13 +142,13 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "routing_protocols" : ["OSPF","iBGP"],
+                    "routing_protocols" : ["OSPF","iBGP","LDP"],
                     "area" : "0",
                     "connected_to" : "R3"
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "routing_protocols" : ["OSPF","iBGP"],
+                    "routing_protocols" : ["OSPF","iBGP","LDP"],
                     "area" : "0",
                     "connected_to" : "R4"
                 },
@@ -216,7 +216,7 @@
                 },
                 {
                     "name" : "GigabitEthernet3/0",
-                    "routing_protocols" : ["RIP","iBGP"],
+                    "routing_protocols" : ["RIP","eBGP"],
                     "area" : null,
                     "connected_to" : "R4"
                 }
@@ -238,7 +238,7 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "routing_protocols" : ["OSPF","iBGP"],
+                    "routing_protocols" : ["OSPF","eBGP"],
                     "area" : null,
                     "connected_to" : "R5"
                 }
