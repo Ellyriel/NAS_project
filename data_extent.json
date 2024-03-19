@@ -150,21 +150,19 @@
         {
             "hostname" : "R6",
             "id" : "6.6.6.6",
-            "AS" : "100",
-            "area" : null,
+            "AS" : "200",
+            "area" : "11",
             "neighbors":["R1"],
             "interfaces" : 
             [
                 {
                     "name" : "Loopback0",
                     "protocols" : ["OSPF","iBGP"],
-                    "area" : null,
                     "connected_to" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : ["OSPF","iBGP"],
-                    "area" : null,
+                    "protocols" : ["OSPF","eBGP"],
                     "connected_to" : "R1"
                 }
             ]
@@ -172,55 +170,39 @@
         {
             "hostname" : "R7",
             "id" : "7.7.7.7",
-            "AS" : "100",
-            "area" : null,
+            "AS" : "200",
+            "area" : "11",
             "neighbors":["R1"],
             "interfaces" : 
             [
                 {
                     "name" : "Loopback0",
                     "protocols" : ["OSPF","iBGP"],
-                    "area" : null,
                     "connected_to" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : ["eBGP"],
-                    "area" : null,
-                    "connected_to" : "R9"
-                },
-                {
-                    "name" : "GigabitEthernet2/0",
-                    "protocols" : ["RIP","iBGP"],
-                    "area" : null,
-                    "connected_to" : "R5"
-                },
-                {
-                    "name" : "GigabitEthernet3/0",
-                    "protocols" : ["RIP","eBGP"],
-                    "area" : null,
-                    "connected_to" : "R4"
+                    "protocols" : ["OSPF","eBGP"],
+                    "connected_to" : "R1"
                 }
             ]
         },
         {
             "hostname" : "R8",
             "id" : "8.8.8.8",
-            "AS" : "200",
-            "area" : null,
+            "AS" : "300",
+            "area" : "12",
             "neighbors":["R5"],
             "interfaces" : 
             [
                 {
                     "name" : "Loopback0",
                     "protocols" : ["OSPF","iBGP"],
-                    "area" : null,
                     "connected_to" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
                     "protocols" : ["OSPF","eBGP"],
-                    "area" : null,
                     "connected_to" : "R5"
                 }
             ]
@@ -228,21 +210,19 @@
         {
             "hostname" : "R9",
             "id" : "9.9.9.9",
-            "AS" : "200",
-            "area" : null,
+            "AS" : "300",
+            "area" : "12",
             "neighbors":["R5"],
             "interfaces" : 
             [
                 {
                     "name" : "Loopback0",
                     "protocols" : ["OSPF","iBGP"],
-                    "area" : null,
                     "connected_to" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
                     "protocols" : ["OSPF","eBGP"],
-                    "area" : null,
                     "connected_to" : "R5"
                 }
             ]
