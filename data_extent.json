@@ -171,7 +171,7 @@
             "hostname" : "R7",
             "id" : "7.7.7.7",
             "AS" : "200",
-            "area" : "11",
+            "area" : "21",
             "neighbors":["R1"],
             "interfaces" : 
             [
@@ -211,7 +211,7 @@
             "hostname" : "R9",
             "id" : "9.9.9.9",
             "AS" : "300",
-            "area" : "12",
+            "area" : "22",
             "neighbors":["R5"],
             "interfaces" : 
             [
