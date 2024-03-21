@@ -9,17 +9,20 @@ def configureBGP(list_routers, router, ip_version, file):
 
         ecriture_fichier(file,texte)
 
-        iBGP, routes_AS = neighbors_iBGP(list_routers, router.AS, router.hostname, ip_version)
-        for address in iBGP :
-            ecriture_fichier(file," neighbor " + address + " remote-as " + router.AS + "\n")
-            ecriture_fichier(file," neighbor " + address + " update-source Loopback0\n")
-
-        eBGP = []
+        iBGP = []
         for interface in router.interfaces :
-            if "eBGP" in interface.protocols :
+            if "iBGP" in interface.protocols and iBGP == [] :
+                iBGP, routes_AS = neighbors_iBGP(list_routers, router.AS, router.hostname, ip_version)
+                for address in iBGP :
+                    ecriture_fichier(file," neighbor " + address + " remote-as " + router.AS + "\n")
+                    ecriture_fichier(file," neighbor " + address + " update-source Loopback0\n")
+
+        eBGP = [] 
+        for interface in router.interfaces :
+            if "eBGP" in interface.protocols and eBGP == []:
                 eBGP = neighbors_eBGP(list_routers, router.hostname)
                 for address in range(0, len(eBGP)-1, 2) :
-                    ecriture_fichier(file, " neighbor " + eBGP[address] + " remote-as " + str(eBGP[address+1]) + "\n")
+                    ecriture_fichier(file, " neighbor " + eBGP[address] + " remote-as " + eBGP[address+1] + "\n")
         
         if ip_version == 6 :
             texte = " !\n" + " address-family ipv4\n" 
@@ -33,74 +36,52 @@ def configureBGP(list_routers, router, ip_version, file):
 
         if eBGP != [] :
             prefixes = networks(routes_AS)
-            for u in prefixes : 
-                ecriture_fichier(file,"  network " + u + "\n")
-        for i in iBGP:
-            ecriture_fichier(file,"  neighbor " + i + " activate\n")
-            if ip_version == 4 :
-                ecriture_fichier(file, "  neighbor " + i + " send-community extended\n")
-        for j in range (0,len(eBGP),2):
-            ecriture_fichier(file,"  neighbor " + eBGP[j] + " activate\n")
+            for p in prefixes : 
+                ecriture_fichier(file,"  network " + p + "\n")
+            for i in range (0,len(eBGP),2):
+                ecriture_fichier(file,"  neighbor " + eBGP[i] + " activate\n")
+        if iBGP != [] :
+            for i in iBGP:
+                ecriture_fichier(file,"  neighbor " + i + " activate\n")
+                if ip_version == 4 :
+                    ecriture_fichier(file, "  neighbor " + i + " send-community extended\n")
 
         ecriture_fichier(file," exit-address-family\n"+"!\n")
 
 
-def configureBGP_4(router, list_routers, file):
-    texte = "router bgp " + router.AS + "\n"
-    texte += " bgp router-id " + router.id + "\n"
-    texte += " bgp log-neighbor-changes\n"
-
-    ecriture_fichier(file,texte)
-
-    iBGP, routes_AS = neighbors_iBGP(list_routers, router.AS, router.hostname)
-    for address in iBGP :
-       ecriture_fichier(file, " neighbor " + address + " remote-as " + router.AS + "\n")
-       ecriture_fichier(file, " neighbor " + address + " update-source Loopback0\n")
-
-    ecriture_fichier(file, " !\n" + " address-family vpnv4\n")
-
-    for address in iBGP :
-        ecriture_fichier(file, "  neighbor " + address + " activate\n")
-        ecriture_fichier(file, "  neighbor " + address + " send-community extended\n")
-
-    ecriture_fichier(file, " exit-address-family\n!\n")
-
-
-
-def neighbors_iBGP(list_routers, AS_host, hostname, ip_version): #fonctionne
+def neighbors_iBGP(list_routers, AS_host, hostname, ip_version):
     '''
     retourne une listes qui contient toutes les adresses loopback des routeurs de l'AS de l'hôte dans la liste iBGP (sans l'adresse loopback de l'hôte). 
     retourne dans routes_AS les ad ip des routes de l'AS qui ne sont pas en Loopback
     '''
     iBGP = []
     routes_AS = []
-    for i in list_routers:
-        if (i.AS == AS_host and hostname != i.hostname):
-            interfaces = i.interfaces
-            for j in interfaces :
-                if j.name == "Loopback0" :
+    for router in list_routers:
+        if (router.AS == AS_host and router.hostname != hostname):
+            for interface in router.interfaces :
+                if interface.name == "Loopback0" and "iBGP" in interface.protocols :
                     if ip_version == 6 :
-                        ip = enleve_masque_6(j.ip_address)
+                        ip = enleve_masque_6(interface.ip_address)
                     elif ip_version == 4:
-                        ip, mask = enleve_masque_4(j.ip_address)
+                        ip = enleve_masque_4(interface.ip_address)
                     iBGP.append(ip)
-                elif (j.name != "Loopback0" and "eBGP" not in j.protocols) : 
-                    routes_AS.append(j.ip_address)
+                elif interface.name != "Loopback0" and "iBGP" in interface.protocols :
+                    routes_AS.append(interface.ip_address)
     return iBGP, routes_AS
 
-def neighbors_eBGP(list_routers, hostname): #fonctionne
+def neighbors_eBGP(list_routers, hostname):
     '''
     retourne une listes qui contient toutes les adresses des routeurs voisins en eBGP de l'AS de l'hôte et le numéro d'AS du voisin
     par exemple : eBGP = ["2001:111:112:34::1/64","112"]
     '''
     eBGP = []
-    for i in list_routers:
-        if i.hostname != hostname and hostname in i.neighbors:
-            for j in i.interfaces:
-                if "eBGP" in j.protocols :
-                    ip = enleve_masque_6(j.ip_address)
+    for router in list_routers:
+        if (router.hostname != hostname and hostname in router.neighbors) :
+            for interface in router.interfaces:
+                if "eBGP" in interface.protocols :
+                    ip = enleve_masque_4(interface.ip_address)
                     eBGP.append(ip)
-                    eBGP.append(i.AS)
+                    eBGP.append(router.AS)
     return eBGP
 
 def ecriture_fichier(file,text):
@@ -122,8 +103,8 @@ def enleve_masque_4(ip_masque):
     '''
     indice = ip_masque.find(" ")
     ip_sans_masque = ip_masque[:indice]
-    masque = ip_masque[indice+1:]
-    return ip_sans_masque, masque
+    #masque = ip_masque[indice+1:]
+    return ip_sans_masque
 
 def prefixe_ip_6(ip_masque):
     '''
