@@ -121,11 +121,12 @@ def creation_fichier(router):
         i += 1     
     """
 
-for i in range (5):
+for i in range (len(list_routers)):
     router = list_routers[i]
     fichier_config = creation_fichier(router)
     debut_cfg.creation_texte_debut(router, ip_version, fichier_config)
     interface_function.configureinterface(router, ip_version, fichier_config)
-    #bgp.configureBGP(list_routers,router.interfaces, router.hostname, router.id, router.AS, fichier_config)
+    bgp.configureBGP(list_routers, router, ip_version, fichier_config)
     fin_cfg.creation_texte_fin(router, ip_version, fichier_config)
+    print(f"Config routeur {i+1} complète")
 

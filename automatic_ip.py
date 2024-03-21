@@ -29,15 +29,17 @@ def num_ip_4(router1, router2):
     num_router2 = int(router2.hostname[1:])
     if num_router1 < num_router2:
         numero = num_router1*10 + num_router2
+        suffixe = "1"
     else :
         numero = num_router2*10 + num_router1
-    return str(numero)
+        suffixe = "2"
+    return str(numero), suffixe
     
 def generer_ip_4(router1,router2):
-    numero = num_ip_4(router1, router2)
-    address_ip = "192.168." + numero +"." + router1.hostname[1:] + " 255.255.255.0"
+    numero, suffixe = num_ip_4(router1, router2)
+    address_ip = "192.168." + numero +"." + suffixe + " 255.255.255.252"
     return address_ip
 
 def generer_ip_loopback_4(router):
-    address_ip = "192.168." + router.hostname[1:] + "." + router.hostname[1:] + " 255.255.255.255"
+    address_ip = router.hostname[1:] + "." + router.hostname[1:] + "." + router.hostname[1:] + "." + router.hostname[1:] + " 255.255.255.255"
     return address_ip

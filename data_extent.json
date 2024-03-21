@@ -17,17 +17,17 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : ["OSPF","iBGP","LDP"],
+                    "protocols" : ["OSPF","LDP"],
                     "connected_to" : "R2"
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "protocols" : ["OSPF","eBGP"],
+                    "protocols" : [],
                     "connected_to" : "R6"
                 },
                 {
                     "name" : "GigabitEthernet3/0",
-                    "protocols" : ["OSPF","eBGP"],
+                    "protocols" : [],
                     "connected_to" : "R7"
                 }
             ]
@@ -47,17 +47,17 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : ["OSPF","iBGP","LDP"],
+                    "protocols" : ["OSPF","LDP"],
                     "connected_to" : "R1"
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "protocols" : ["OSPF","iBGP","LDP"],
+                    "protocols" : ["OSPF","LDP"],
                     "connected_to" : "R3"
                 },
                 {
                     "name" : "GigabitEthernet3/0",
-                    "protocols" : ["OSPF","iBGP","LDP"],
+                    "protocols" : ["OSPF","LDP"],
                     "connected_to" : "R4"
                 }
             ] 
@@ -77,12 +77,12 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : ["OSPF","iBGP","LDP"],
+                    "protocols" : ["OSPF","LDP"],
                     "connected_to" : "R5"
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "protocols" : ["OSPF","iBGP","LDP"],
+                    "protocols" : ["OSPF","LDP"],
                     "connected_to" : "R2"
                 }
             ]
@@ -102,12 +102,12 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : ["OSPF","iBGP","LDP"],
+                    "protocols" : ["OSPF","LDP"],
                     "connected_to" : "R2"
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "protocols" : ["OSPF","iBGP","LDP"],
+                    "protocols" : ["OSPF","LDP"],
                     "connected_to" : "R5"
                 }
             ]
@@ -127,22 +127,22 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : ["OSPF","iBGP","LDP"],
+                    "protocols" : ["OSPF","LDP"],
                     "connected_to" : "R3"
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "protocols" : ["OSPF","iBGP","LDP"],
+                    "protocols" : ["OSPF","LDP"],
                     "connected_to" : "R4"
                 },
                 {
                     "name" : "GigabitEthernet3/0",
-                    "protocols" : ["OSPF","eBGP"],
+                    "protocols" : [],
                     "connected_to" : "R8"
                 },
                 {
                     "name" : "GigabitEthernet4/0",
-                    "protocols" : ["OSPF","eBGP"],
+                    "protocols" : [],
                     "connected_to" : "R9"
                 }
             ] 
@@ -150,19 +150,19 @@
         {
             "hostname" : "R6",
             "id" : "6.6.6.6",
-            "AS" : "200",
-            "area" : "11",
+            "AS" : null,
+            "area" : null,
             "neighbors":["R1"],
             "interfaces" : 
             [
                 {
                     "name" : "Loopback0",
-                    "protocols" : ["OSPF","iBGP"],
+                    "protocols" : [],
                     "connected_to" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : ["OSPF","eBGP"],
+                    "protocols" : [],
                     "connected_to" : "R1"
                 }
             ]
@@ -170,19 +170,19 @@
         {
             "hostname" : "R7",
             "id" : "7.7.7.7",
-            "AS" : "200",
-            "area" : "21",
+            "AS" : null,
+            "area" : null,
             "neighbors":["R1"],
             "interfaces" : 
             [
                 {
                     "name" : "Loopback0",
-                    "protocols" : ["OSPF","iBGP"],
+                    "protocols" : [],
                     "connected_to" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : ["OSPF","eBGP"],
+                    "protocols" : [],
                     "connected_to" : "R1"
                 }
             ]
@@ -190,19 +190,19 @@
         {
             "hostname" : "R8",
             "id" : "8.8.8.8",
-            "AS" : "300",
-            "area" : "12",
+            "AS" : null,
+            "area" : null,
             "neighbors":["R5"],
             "interfaces" : 
             [
                 {
                     "name" : "Loopback0",
-                    "protocols" : ["OSPF","iBGP"],
+                    "protocols" : [],
                     "connected_to" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : ["OSPF","eBGP"],
+                    "protocols" : [],
                     "connected_to" : "R5"
                 }
             ]
@@ -210,19 +210,19 @@
         {
             "hostname" : "R9",
             "id" : "9.9.9.9",
-            "AS" : "300",
-            "area" : "22",
+            "AS" : null,
+            "area" : null,
             "neighbors":["R5"],
             "interfaces" : 
             [
                 {
                     "name" : "Loopback0",
-                    "protocols" : ["OSPF","iBGP"],
+                    "protocols" : [],
                     "connected_to" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : ["OSPF","eBGP"],
+                    "protocols" : [],
                     "connected_to" : "R5"
                 }
             ]
