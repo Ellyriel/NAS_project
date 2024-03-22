@@ -46,7 +46,11 @@ def configureBGP(list_routers, router, ip_version, file):
                 if ip_version == 4 :
                     ecriture_fichier(file, "  neighbor " + i + " send-community extended\n")
 
-        ecriture_fichier(file," exit-address-family\n"+"!\n")
+        ecriture_fichier(file," exit-address-family\n")
+
+        vfr_bgp_def(router, file)
+
+        ecriture_fichier(file, "!\n")
 
 
 def neighbors_iBGP(list_routers, AS_host, hostname, ip_version):
@@ -155,3 +159,25 @@ def networks (routes_AS):
         if new == True :
             prefixes.append(prefixe)
     return prefixes
+
+def vfr_bgp_def(router, file):
+    """!
+ address-family ipv4 vrf Client_A
+  neighbor 192.168.58.2 remote-as 800
+  neighbor 192.168.58.2 activate
+ exit-address-family
+ !
+ address-family ipv4 vrf Client_B
+  neighbor 192.168.59.2 remote-as 900
+  neighbor 192.168.59.2 activate
+ exit-address-family
+!
+"""
+    for interface in router.interfaces :
+        ip = interface.ip_address
+        if interface.client != None : 
+            ecriture_fichier(file, " !\n address-family ipv4 vrf Client_" + interface.client[0] + "\n")
+            ecriture_fichier(file, "  neighbor " + ip + " remote-as " + interface.connected_to[1] + "00\n")
+            ecriture_fichier(file, "  neighbor " + ip + " activate\n")
+            ecriture_fichier(file, " exit-address-family\n")
+    
