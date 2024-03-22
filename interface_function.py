@@ -1,46 +1,35 @@
-"""
-Le code doit renvoyer le texte suivant
-
-interface Loopback0
- no ip address
- ipv6 address 2001:100::1/128
- ipv6 enable
-!
-interface FastEthernet0/0
- no ip address
- shutdown
- duplex full
-!
-interface GigabitEthernet1/0
- no ip address
- negotiation auto
- ipv6 address 2001:100:4:1::1/64
- ipv6 enable
- ipv6 rip ripng enable
-!
-interface GigabitEthernet2/0
- no ip address
- shutdown
- negotiation auto
-!
-"""
-
 def ecriture_fichier(file,text):
     file.write(text)
 
-def configureinterface(router, file):
+def configureinterface(router, ip_version, file):
     for interface in router.interfaces:
         ecriture_fichier(file, "interface " + interface.name + "\n")
-        ip_ad = interface.ip_address
-        process_id = router.hostname[1:]
-        area = interface.area
-        if interface.name == "Loopback0" and ip_ad != None :
-                ecriture_fichier(file, " ip address " + ip_ad + "\n")
-                ecriture_fichier(file, " ip ospf " + process_id + " area " + area + "\n")
-        else : 
-            if interface.ip_address != None:
-                ecriture_fichier(file, " ip address " + ip_ad + "\n")
-                if area != None : 
-                    ecriture_fichier(file," ip ospf " + process_id + " area " + area + "\n")
-                    ecriture_fichier(file, " negociation auto\n")
-        ecriture_fichier(file,"!\n")
+        
+        if ip_version == 4 :
+            ecriture_fichier(file, " ip address " + interface.ip_address + "\n")
+            if "OSPF" in interface.protocols :
+                process_id = router.hostname[1:]
+                ecriture_fichier(file," ip ospf " + process_id + " area " + router.area + "\n")
+            if interface.name != "Loopback0":
+                ecriture_fichier(file, " negociation auto\n")
+            if "LDP" in interface.protocols :
+                ecriture_fichier(file, " mpls ip\n")
+            ecriture_fichier(file,"!\n")
+        
+        elif ip_version == 6:
+            ecriture_fichier(file," no ip address \n")
+            if interface.name != "Loopback0":
+                ecriture_fichier(file, " negociation auto\n")
+            ecriture_fichier(file, " ipv6 address " + interface.ip_address + "\n")
+            ecriture_fichier(file," ipv6 enable\n")
+            if "RIP" in interface.protocols :
+                ecriture_fichier(file," ipv6 rip ripng enable \n")
+            if "OSPF" in interface.protocols :
+                process_id = router.hostname[1:]
+                ecriture_fichier(file," ipv6 ospf " + process_id + " area " + router.area + "\n")
+            ecriture_fichier(file,"!\n")
+        
+        
+        
+        
+       
