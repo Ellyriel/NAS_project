@@ -13,22 +13,26 @@
                 {
                     "name" : "Loopback0",
                     "protocols" : ["OSPF","iBGP"],
-                    "connected_to" : null
+                    "connected_to" : null,
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
                     "protocols" : ["OSPF","LDP"],
-                    "connected_to" : "R2"
+                    "connected_to" : "R2",
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "protocols" : [],
-                    "connected_to" : "R6"
+                    "protocols" : ["VPN"],
+                    "connected_to" : "R6",
+                    "client" : "A"
                 },
                 {
                     "name" : "GigabitEthernet3/0",
-                    "protocols" : [],
-                    "connected_to" : "R7"
+                    "protocols" : ["VPN"],
+                    "connected_to" : "R7",
+                    "client" : "B"
                 }
             ]
         },
@@ -43,22 +47,26 @@
                 {
                     "name" : "Loopback0",
                     "protocols" : ["OSPF"],
-                    "connected_to" : null
+                    "connected_to" : null,
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
                     "protocols" : ["OSPF","LDP"],
-                    "connected_to" : "R1"
+                    "connected_to" : "R1",
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet2/0",
                     "protocols" : ["OSPF","LDP"],
-                    "connected_to" : "R3"
+                    "connected_to" : "R3",
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet3/0",
                     "protocols" : ["OSPF","LDP"],
-                    "connected_to" : "R4"
+                    "connected_to" : "R4",
+                    "client" : null
                 }
             ] 
         },
@@ -73,17 +81,20 @@
                 {
                     "name" : "Loopback0",
                     "protocols" : ["OSPF"],
-                    "connected_to" : null
+                    "connected_to" : null,
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
                     "protocols" : ["OSPF","LDP"],
-                    "connected_to" : "R5"
+                    "connected_to" : "R5",
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet2/0",
                     "protocols" : ["OSPF","LDP"],
-                    "connected_to" : "R2"
+                    "connected_to" : "R2",
+                    "client" : null
                 }
             ]
         },
@@ -98,17 +109,20 @@
                 {
                     "name" : "Loopback0",
                     "protocols" : ["OSPF"],
-                    "connected_to" : null
+                    "connected_to" : null,
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
                     "protocols" : ["OSPF","LDP"],
-                    "connected_to" : "R2"
+                    "connected_to" : "R2",
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet2/0",
                     "protocols" : ["OSPF","LDP"],
-                    "connected_to" : "R5"
+                    "connected_to" : "R5",
+                    "client" : null
                 }
             ]
         },
@@ -123,27 +137,32 @@
                 {
                     "name" : "Loopback0",
                     "protocols" : ["OSPF","iBGP"],
-                    "connected_to" : null
+                    "connected_to" : null,
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
                     "protocols" : ["OSPF","LDP"],
-                    "connected_to" : "R3"
+                    "connected_to" : "R3",
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet2/0",
                     "protocols" : ["OSPF","LDP"],
-                    "connected_to" : "R4"
+                    "connected_to" : "R4",
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet3/0",
-                    "protocols" : [],
-                    "connected_to" : "R8"
+                    "protocols" : ["VPN"],
+                    "connected_to" : "R8",
+                    "client" : "A"
                 },
                 {
                     "name" : "GigabitEthernet4/0",
-                    "protocols" : [],
-                    "connected_to" : "R9"
+                    "protocols" : ["VPN"],
+                    "connected_to" : "R9",
+                    "client" : "B"
                 }
             ] 
         },
@@ -158,12 +177,14 @@
                 {
                     "name" : "Loopback0",
                     "protocols" : [],
-                    "connected_to" : null
+                    "connected_to" : null,
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
                     "protocols" : [],
-                    "connected_to" : "R1"
+                    "connected_to" : "R1",
+                    "client" : null
                 }
             ]
         },
@@ -178,12 +199,14 @@
                 {
                     "name" : "Loopback0",
                     "protocols" : [],
-                    "connected_to" : null
+                    "connected_to" : null,
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
                     "protocols" : [],
-                    "connected_to" : "R1"
+                    "connected_to" : "R1",
+                    "client" : null
                 }
             ]
         },
@@ -198,12 +221,14 @@
                 {
                     "name" : "Loopback0",
                     "protocols" : [],
-                    "connected_to" : null
+                    "connected_to" : null,
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
                     "protocols" : [],
-                    "connected_to" : "R5"
+                    "connected_to" : "R5",
+                    "client" : null
                 }
             ]
         },
@@ -218,12 +243,14 @@
                 {
                     "name" : "Loopback0",
                     "protocols" : [],
-                    "connected_to" : null
+                    "connected_to" : null,
+                    "client" : null
                 },
                 {
                     "name" : "GigabitEthernet1/0",
                     "protocols" : [],
-                    "connected_to" : "R5"
+                    "connected_to" : "R5",
+                    "client" : null
                 }
             ]
         }
