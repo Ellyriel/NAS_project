@@ -169,7 +169,7 @@
         {
             "hostname" : "R6",
             "id" : "6.6.6.6",
-            "AS" : null,
+            "AS" : "600",
             "area" : null,
             "neighbors":["R1"],
             "interfaces" : 
@@ -191,7 +191,7 @@
         {
             "hostname" : "R7",
             "id" : "7.7.7.7",
-            "AS" : null,
+            "AS" : "700",
             "area" : null,
             "neighbors":["R1"],
             "interfaces" : 
@@ -213,7 +213,7 @@
         {
             "hostname" : "R8",
             "id" : "8.8.8.8",
-            "AS" : null,
+            "AS" : "800",
             "area" : null,
             "neighbors":["R5"],
             "interfaces" : 
@@ -235,7 +235,7 @@
         {
             "hostname" : "R9",
             "id" : "9.9.9.9",
-            "AS" : null,
+            "AS" : "900",
             "area" : null,
             "neighbors":["R5"],
             "interfaces" : 
