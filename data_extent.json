@@ -24,15 +24,15 @@
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "protocols" : ["VPN"],
+                    "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R6",
-                    "client" : "A"
+                    "client" : ["A","100:110","100:1000"]
                 },
                 {
                     "name" : "GigabitEthernet3/0",
-                    "protocols" : ["VPN"],
+                    "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R7",
-                    "client" : "B"
+                    "client" : ["B","100:110","100:2000"]
                 }
             ]
         },
@@ -154,15 +154,15 @@
                 },
                 {
                     "name" : "GigabitEthernet3/0",
-                    "protocols" : ["VPN"],
+                    "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R8",
-                    "client" : "A"
+                    "client" : ["A","100:110","100:1000"]
                 },
                 {
                     "name" : "GigabitEthernet4/0",
-                    "protocols" : ["VPN"],
+                    "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R9",
-                    "client" : "B"
+                    "client" : ["B","100:110","100:2000"]
                 }
             ] 
         },
@@ -182,7 +182,7 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : [],
+                    "protocols" : ["eBGP"],
                     "connected_to" : "R1",
                     "client" : null
                 }
@@ -204,7 +204,7 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : [],
+                    "protocols" : ["eBGP"],
                     "connected_to" : "R1",
                     "client" : null
                 }
@@ -226,7 +226,7 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : [],
+                    "protocols" : ["eBGP"],
                     "connected_to" : "R5",
                     "client" : null
                 }
@@ -248,7 +248,7 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : [],
+                    "protocols" : ["eBGP"],
                     "connected_to" : "R5",
                     "client" : null
                 }

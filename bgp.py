@@ -35,11 +35,12 @@ def configureBGP(list_routers, router, ip_version, file):
         ecriture_fichier(file, texte)
 
         if eBGP != [] :
-            prefixes = networks(routes_AS)
-            for p in prefixes : 
-                ecriture_fichier(file,"  network " + p + "\n")
-            for i in range (0,len(eBGP),2):
-                ecriture_fichier(file,"  neighbor " + eBGP[i] + " activate\n")
+            if ip_version == 6 :
+                prefixes = networks(routes_AS)
+                for p in prefixes : 
+                    ecriture_fichier(file,"  network " + p + "\n")
+                for i in range (0,len(eBGP),2):
+                    ecriture_fichier(file,"  neighbor " + eBGP[i] + " activate\n")
         if iBGP != [] :
             for i in iBGP:
                 ecriture_fichier(file,"  neighbor " + i + " activate\n")
