@@ -28,11 +28,17 @@ def configureBGP(list_routers, router, ip_version, file):
             texte = " !\n" + " address-family ipv4\n" 
             texte += " exit-address-family\n"+" !\n"
             texte += " address-family ipv6\n"
+            ecriture_fichier(file, texte)
 
         elif ip_version == 4 :
-            texte = " !\n" + " address-family vpnv4\n"
+            is_ibgp = False
+            for interface in router.interfaces :
+                if "iBGP" in interface.protocols and not is_ibgp :
+                    texte = " !\n" + " address-family vpnv4\n"
+                    is_ibgp = True
+                    ecriture_fichier(file, texte)
 
-        ecriture_fichier(file, texte)
+        #ecriture_fichier(file, texte)
 
         if eBGP != [] :
             if ip_version == 6 :
@@ -41,13 +47,15 @@ def configureBGP(list_routers, router, ip_version, file):
                     ecriture_fichier(file,"  network " + p + "\n")
                 for i in range (0,len(eBGP),2):
                     ecriture_fichier(file,"  neighbor " + eBGP[i] + " activate\n")
+                ecriture_fichier(file," exit-address-family\n")
         if iBGP != [] :
             for i in iBGP:
                 ecriture_fichier(file,"  neighbor " + i + " activate\n")
                 if ip_version == 4 :
                     ecriture_fichier(file, "  neighbor " + i + " send-community extended\n")
+            ecriture_fichier(file," exit-address-family\n")
 
-        ecriture_fichier(file," exit-address-family\n")
+        
 
         vfr_bgp_def(router, file, list_routers)
 
@@ -83,7 +91,7 @@ def neighbors_eBGP(list_routers, hostname):
     for router in list_routers:
         if (router.hostname != hostname and hostname in router.neighbors) :
             for interface in router.interfaces:
-                if "eBGP" in interface.protocols :
+                if "eBGP" in interface.protocols and interface.connected_to == hostname :
                     ip = enleve_masque_4(interface.ip_address)
                     eBGP.append(ip)
                     eBGP.append(router.AS)
