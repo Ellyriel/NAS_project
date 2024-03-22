@@ -37,11 +37,12 @@ class Router :
 # classe définissant une interface d'un routeur
 class Interface :
 
-    def __init__ (self, name, ip_address, protocols, connected_to) :
+    def __init__ (self, name, ip_address, protocols, connected_to, client) :
         self.name = name
         self.ip_address = ip_address
         self.protocols = protocols
         self.connected_to = connected_to
+        self.client = client
 
     def __str__(self):
         return f'[Interface {self.name} : IP Address {self.ip_address}, Routing Protocols {self.protocols}, Connected to {(self.connected_to)}]'
@@ -65,7 +66,8 @@ for router in data["router"]:
         ip_address = None
         protocols = interface["protocols"]
         connected_to = interface["connected_to"]
-        list_interfaces.append(Interface(name, ip_address, protocols, connected_to))
+        client = interface["client"]
+        list_interfaces.append(Interface(name, ip_address, protocols, connected_to, client))
 
     list_routers.append(Router(hostname, id, AS, area, neighbors, list_interfaces))
 
@@ -106,9 +108,9 @@ def affichage(list_routers):
 
 def creation_fichier(router):
     name = "i"+ router.hostname[1:] + "_startup-config.cfg"
-    #f = open(name,"w")
-    #return f
-    road = os.path.join('./NAS/NAS/project-files/dynamips')
+    f = open(name,"w")
+    return f
+    '''road = os.path.join('./NAS/NAS/project-files/dynamips')
     dossiers = [f for f in os.listdir(road)]
     i = 0
     while i < len(dossiers) :
@@ -117,7 +119,7 @@ def creation_fichier(router):
         if name in fichier:
             f = open(road_dossier + '/' + name,"w")
             return f
-        i += 1     
+        i += 1'''     
 
 for i in range (len(list_routers)):
     router = list_routers[i]
