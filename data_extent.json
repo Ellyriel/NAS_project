@@ -24,15 +24,15 @@
                 },
                 {
                     "name" : "GigabitEthernet2/0",
-                    "protocols" : ["VPN"],
+                    "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R6",
-                    "client" : "A"
+                    "client" : ["A","100:110","100:1000"]
                 },
                 {
                     "name" : "GigabitEthernet3/0",
-                    "protocols" : ["VPN"],
+                    "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R7",
-                    "client" : "B"
+                    "client" : ["B","100:110","100:2000"]
                 }
             ]
         },
@@ -154,22 +154,22 @@
                 },
                 {
                     "name" : "GigabitEthernet3/0",
-                    "protocols" : ["VPN"],
+                    "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R8",
-                    "client" : "A"
+                    "client" : ["A","100:110","100:1000"]
                 },
                 {
                     "name" : "GigabitEthernet4/0",
-                    "protocols" : ["VPN"],
+                    "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R9",
-                    "client" : "B"
+                    "client" : ["B","100:110","100:2000"]
                 }
             ] 
         },
         {
             "hostname" : "R6",
             "id" : "6.6.6.6",
-            "AS" : null,
+            "AS" : "600",
             "area" : null,
             "neighbors":["R1"],
             "interfaces" : 
@@ -182,7 +182,7 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : [],
+                    "protocols" : ["eBGP"],
                     "connected_to" : "R1",
                     "client" : null
                 }
@@ -191,7 +191,7 @@
         {
             "hostname" : "R7",
             "id" : "7.7.7.7",
-            "AS" : null,
+            "AS" : "700",
             "area" : null,
             "neighbors":["R1"],
             "interfaces" : 
@@ -204,7 +204,7 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : [],
+                    "protocols" : ["eBGP"],
                     "connected_to" : "R1",
                     "client" : null
                 }
@@ -213,7 +213,7 @@
         {
             "hostname" : "R8",
             "id" : "8.8.8.8",
-            "AS" : null,
+            "AS" : "800",
             "area" : null,
             "neighbors":["R5"],
             "interfaces" : 
@@ -226,7 +226,7 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : [],
+                    "protocols" : ["eBGP"],
                     "connected_to" : "R5",
                     "client" : null
                 }
@@ -235,7 +235,7 @@
         {
             "hostname" : "R9",
             "id" : "9.9.9.9",
-            "AS" : null,
+            "AS" : "900",
             "area" : null,
             "neighbors":["R5"],
             "interfaces" : 
@@ -248,7 +248,7 @@
                 },
                 {
                     "name" : "GigabitEthernet1/0",
-                    "protocols" : [],
+                    "protocols" : ["eBGP"],
                     "connected_to" : "R5",
                     "client" : null
                 }
