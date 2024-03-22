@@ -42,7 +42,7 @@
             [
                 {
                     "name" : "Loopback0",
-                    "protocols" : ["OSPF","iBGP"],
+                    "protocols" : ["OSPF"],
                     "connected_to" : null
                 },
                 {
@@ -72,7 +72,7 @@
             [
                 {
                     "name" : "Loopback0",
-                    "protocols" : ["OSPF","iBGP"],
+                    "protocols" : ["OSPF"],
                     "connected_to" : null
                 },
                 {
@@ -97,7 +97,7 @@
             [
                 {
                     "name" : "Loopback0",
-                    "protocols" : ["OSPF","iBGP"],
+                    "protocols" : ["OSPF"],
                     "connected_to" : null
                 },
                 {
