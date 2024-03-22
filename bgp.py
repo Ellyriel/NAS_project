@@ -4,7 +4,7 @@ def configureBGP(list_routers, router, ip_version, file):
         texte = "router bgp " + router.AS + "\n"
         texte += " bgp router-id " + router.id + "\n"
         texte += " bgp log-neighbor-changes\n"
-        texte += " redistribute connected"
+        texte += " redistribute connected\n"
         if ip_version == 6 :
             texte += " no bgp default ipv4-unicast\n"
 
