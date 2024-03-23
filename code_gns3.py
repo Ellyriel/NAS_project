@@ -108,9 +108,9 @@ def affichage(list_routers):
 
 def creation_fichier(router):
     name = "i"+ router.hostname[1:] + "_startup-config.cfg"
-    f = open(name,"w")
-    return f
-    '''road = os.path.join('./NAS/NAS/project-files/dynamips')
+    #f = open(name,"w")
+    #return f
+    road = os.path.join('./NAS/project-files/dynamips')
     dossiers = [f for f in os.listdir(road)]
     i = 0
     while i < len(dossiers) :
@@ -119,12 +119,12 @@ def creation_fichier(router):
         if name in fichier:
             f = open(road_dossier + '/' + name,"w")
             return f
-        i += 1'''     
+        i += 1 
 
 for i in range (len(list_routers)):
     router = list_routers[i]
     fichier_config = creation_fichier(router)
-    debut_cfg.creation_texte_debut(router, ip_version, fichier_config)
+    debut_cfg.creation_texte_debut(list_routers, router, ip_version, fichier_config)
     interface_function.configureinterface(router, ip_version, fichier_config)
     bgp.configureBGP(list_routers, router, ip_version, fichier_config)
     fin_cfg.creation_texte_fin(router, ip_version, fichier_config)

@@ -1,4 +1,4 @@
-def creation_texte_debut(router, ip_version, file):
+def creation_texte_debut(list_routers, router, ip_version, file):
     '''
     fonction qui crée un texte. Dans notre cas, ce texte sera réécrit plus tard dans le fichier de configuration, et il correspond au début du fichier de configuration
     paramètres : routeur, version de IP utilisée pour notre réseau
@@ -9,7 +9,7 @@ def creation_texte_debut(router, ip_version, file):
 
     ecriture_fichier(file, "boot-start-marker\nboot-end-marker\n" + "!\n"*2)
 
-    vrf_definition(router,file)
+    vrf_definition(router, list_routers, file)
 
     ecriture_fichier(file,"!\nno aaa new-model\nno ip icmp rate-limit unreachable\nip cef\n" + "!\n"*6)
 
@@ -27,12 +27,14 @@ def creation_texte_debut(router, ip_version, file):
 def ecriture_fichier(file,text):
     file.write(text)
 
-def vrf_definition (router,file):
-    for i in router.interfaces :
-        if "VPN" in i.protocols :
-            ecriture_fichier(file, "vrf definition Client_" + i.client[0] +"\n")
-            ecriture_fichier(file, " rd " + i.client[1] +"\n")
-            ecriture_fichier(file, " route-target export " + i.client[2] +"\n")
-            ecriture_fichier(file, " route-target import " + i.client[2] +"\n !\n")
+def vrf_definition (router, list_routers, file):
+    for interface in router.interfaces :
+        if "VPN" in interface.protocols :
+            ecriture_fichier(file, "vrf definition Client_" + interface.client[0] +"\n")
+            for router2 in list_routers :
+                if router2.hostname == interface.connected_to :
+                    ecriture_fichier(file, " rd " + router.AS + ":" + router2.AS +"\n")
+            ecriture_fichier(file, " route-target export " + router.AS + ":" + interface.client[1] +"\n")
+            ecriture_fichier(file, " route-target import " + router.AS + ":" + interface.client[1] +"\n !\n")
             ecriture_fichier(file, " address-family ipv4\n")
             ecriture_fichier(file, " exit-address-family\n!\n")

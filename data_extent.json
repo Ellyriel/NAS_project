@@ -26,13 +26,13 @@
                     "name" : "GigabitEthernet2/0",
                     "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R6",
-                    "client" : ["A","100:110","100:1000"]
+                    "client" : ["A","1000"]
                 },
                 {
                     "name" : "GigabitEthernet3/0",
                     "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R7",
-                    "client" : ["B","100:110","100:2000"]
+                    "client" : ["B","2000"]
                 }
             ]
         },
@@ -156,13 +156,13 @@
                     "name" : "GigabitEthernet3/0",
                     "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R8",
-                    "client" : ["A","100:110","100:1000"]
+                    "client" : ["A","1000"]
                 },
                 {
                     "name" : "GigabitEthernet4/0",
                     "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R9",
-                    "client" : ["B","100:110","100:2000"]
+                    "client" : ["B","2000"]
                 }
             ] 
         },

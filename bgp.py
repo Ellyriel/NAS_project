@@ -4,7 +4,11 @@ def configureBGP(list_routers, router, ip_version, file):
         texte = "router bgp " + router.AS + "\n"
         texte += " bgp router-id " + router.id + "\n"
         texte += " bgp log-neighbor-changes\n"
-        texte += " redistribute connected\n"
+        client = False
+        for interface in router.interfaces :
+            if not client and "eBGP" in interface.protocols and "VPN" not in interface.protocols :
+                texte += " redistribute connected\n"
+                client = True
         if ip_version == 6 :
             texte += " no bgp default ipv4-unicast\n"
 
@@ -20,7 +24,7 @@ def configureBGP(list_routers, router, ip_version, file):
 
         eBGP = [] 
         for interface in router.interfaces :
-            if "eBGP" in interface.protocols and eBGP == []:
+            if "eBGP" in interface.protocols and "VPN" not in interface.protocols and eBGP == []:
                 eBGP = neighbors_eBGP(list_routers, router.hostname)
                 for address in range(0, len(eBGP)-1, 2) :
                     ecriture_fichier(file, " neighbor " + eBGP[address] + " remote-as " + eBGP[address+1] + "\n")
@@ -55,8 +59,6 @@ def configureBGP(list_routers, router, ip_version, file):
                 if ip_version == 4 :
                     ecriture_fichier(file, "  neighbor " + i + " send-community extended\n")
             ecriture_fichier(file," exit-address-family\n")
-
-        
 
         vfr_bgp_def(router, file, list_routers)
 
@@ -183,15 +185,17 @@ def vfr_bgp_def(router, file, list_routers):
  exit-address-family
 !
 """
+    eBGP = []
+    compteur = 0
     for interface in router.interfaces :
-        ip = interface.ip_address
-        if interface.client != None : 
+        if "VPN" in interface.protocols :
             ecriture_fichier(file, " !\n address-family ipv4 vrf Client_" + interface.client[0] + "\n")
-            i = 0
-            while list_routers[i].hostname != interface.connected_to :
-                i +=1
-
-            ecriture_fichier(file, "  neighbor " + ip + " remote-as " + list_routers[i].AS + "\n")
-            ecriture_fichier(file, "  neighbor " + ip + " activate\n")
+            if "eBGP" in interface.protocols and eBGP == []:
+                eBGP = neighbors_eBGP(list_routers, router.hostname)
+            for i in range(compteur, compteur+2-1, 2) :
+                ecriture_fichier(file, "  neighbor " + eBGP[i] + " remote-as " + eBGP[i+1] + "\n")
+                ecriture_fichier(file, "  neighbor " + eBGP[i] + " activate\n")
+            compteur += 2
             ecriture_fichier(file, " exit-address-family\n")
+
     
