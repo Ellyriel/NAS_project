@@ -110,7 +110,7 @@ def creation_fichier(router):
     name = "i"+ router.hostname[1:] + "_startup-config.cfg"
     #f = open(name,"w")
     #return f
-    road = os.path.join('./NAS/project-files/dynamips')
+    road = os.path.join('./NAS_GNS3/project-files/dynamips')
     dossiers = [f for f in os.listdir(road)]
     i = 0
     while i < len(dossiers) :
