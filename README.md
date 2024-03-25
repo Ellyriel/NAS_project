@@ -13,4 +13,4 @@ Automatisation IPv4 (et IPv6, conservé par rapport au projet GNS3) par rapport 
 
 Le fichier GNS3 se trouve dans _NAS_GNS3.zip_. Ci-dessous l'aspect du réseau :
 
-![Réseau GNS3 du groupe](reseau_g22.png = x200)
+![Réseau GNS3 du groupe](reseau_g22.png)
