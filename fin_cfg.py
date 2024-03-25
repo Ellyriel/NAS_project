@@ -13,7 +13,7 @@ def creation_texte_fin(router, ip_version, file):
                 ospf = True
                 ecriture_fichier(file, "router ospf " + router.hostname[1:] + "\n")
                 ecriture_fichier(file, " router-id " + router.id + "\n")
-            if ospf and "eBGP" in interface.protocols :
+            if "OSPF" in interface.protocols and "eBGP" in interface.protocols :
                 ecriture_fichier(file, " passive-interface " + interface.name + "\n")
         ecriture_fichier(file, "!\nip forward-protocol nd\n" + "!\n"*2)
         ecriture_fichier(file, "no ip http server\nno ip http secure-server\n")
@@ -29,7 +29,7 @@ def creation_texte_fin(router, ip_version, file):
                 ospf = True
                 ecriture_fichier(file, "ipv6 router ospf " + router.hostname[1:] + "\n")
                 ecriture_fichier(file, " router-id " + router.id + "\n")
-            if ospf and "eBGP" in interface.protocols :
+            if "OSPF" in interface.protocols and "eBGP" in interface.protocols :
                 ecriture_fichier(file, " passive-interface " + interface.name + "\n")
             
     ecriture_fichier(file, "!\n"*4 + "control-plane\n" + "!\n"*2)
