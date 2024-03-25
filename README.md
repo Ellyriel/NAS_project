@@ -9,4 +9,8 @@ Automatisation IPv4 (et IPv6, conservé par rapport au projet GNS3) par rapport 
 - BGP/MPLS VPN sur les Loopback
 - VRF et eBGP sur les interfaces reliées aux clients
 
-Le fichier GNS3 se trouve dans _NAS_GNS3.zip_.
+# Fichier GNS3
+
+Le fichier GNS3 se trouve dans _NAS_GNS3.zip_. 
+
+![Réseau GNS3 du groupe](reseau_gr22.png)
