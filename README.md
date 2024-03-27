@@ -8,6 +8,7 @@ Automatisation IPv4 (et IPv6, conservé par rapport au projet GNS3) par rapport 
 - MPLS LDP
 - BGP/MPLS VPN sur les Loopback
 - VRF et eBGP sur les interfaces reliées aux clients
+- ** Permettre le partage du site entre les clients (jouer avec plusieurs RT) **
 
 # Fichier GNS3
 
