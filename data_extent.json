@@ -100,7 +100,7 @@
                     "name" : "GigabitEthernet3/0",
                     "protocols" : ["eBGP","VPN"],
                     "connected_to" : "R10",
-                    "client" : ["A","150"]
+                    "client" : ["A","150","B","250"]
                 }
             ]
         },
