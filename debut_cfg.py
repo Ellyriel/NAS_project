@@ -37,7 +37,8 @@ def vrf_definition (router, list_routers, file):
             for router2 in list_routers :
                 if router2.hostname == interface.connected_to :
                     ecriture_fichier(file, " rd " + router.AS + ":" + router2.AS +"\n")
-            ecriture_fichier(file, " route-target export " + router.AS + ":" + interface.client[1] +"\n")
-            ecriture_fichier(file, " route-target import " + router.AS + ":" + interface.client[1] +"\n !\n")
-            ecriture_fichier(file, " address-family ipv4\n")
+            for i in range(1,len(interface.client),2):
+                ecriture_fichier(file, " route-target export " + router.AS + ":" + interface.client[i] +"\n")
+                ecriture_fichier(file, " route-target import " + router.AS + ":" + interface.client[i] +"\n")
+            ecriture_fichier(file, " !\n address-family ipv4\n")
             ecriture_fichier(file, " exit-address-family\n!\n")
