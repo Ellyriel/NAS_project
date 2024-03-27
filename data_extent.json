@@ -26,13 +26,13 @@
                     "name" : "GigabitEthernet2/0",
                     "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R6",
-                    "client" : ["A","150","C","350"]
+                    "client" : ["A","150"]
                 },
                 {
                     "name" : "GigabitEthernet3/0",
                     "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R7",
-                    "client" : ["B","250","C","350"]
+                    "client" : ["B","250"]
                 }
             ]
         },
