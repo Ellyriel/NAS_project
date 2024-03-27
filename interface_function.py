@@ -7,7 +7,10 @@ def configureinterface(router, ip_version, file):
         
         if ip_version == 4 :
             if "VPN" in interface.protocols :
-                ecriture_fichier(file, " vrf forwarding Client_" + interface.client[0] + "\n")
+                nom_client = ""
+                for i in range (0,len(interface.client),2):
+                    nom_client += interface.client[i]
+                ecriture_fichier(file, " vrf forwarding Client_" + nom_client + "\n")
             ecriture_fichier(file, " ip address " + interface.ip_address + "\n")
             if "OSPF" in interface.protocols :
                 process_id = router.hostname[1:]
