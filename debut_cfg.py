@@ -30,7 +30,10 @@ def ecriture_fichier(file,text):
 def vrf_definition (router, list_routers, file):
     for interface in router.interfaces :
         if "VPN" in interface.protocols :
-            ecriture_fichier(file, "vrf definition Client_" + interface.client[0] +"\n")
+            nom_client = ""
+            for i in range (0,len(interface.client),2):
+                nom_client += interface.client[i]
+            ecriture_fichier(file, "vrf definition Client_" + nom_client +"\n")
             for router2 in list_routers :
                 if router2.hostname == interface.connected_to :
                     ecriture_fichier(file, " rd " + router.AS + ":" + router2.AS +"\n")
