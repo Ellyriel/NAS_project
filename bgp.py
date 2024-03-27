@@ -189,7 +189,10 @@ def vfr_bgp_def(router, file, list_routers):
     compteur = 0
     for interface in router.interfaces :
         if "VPN" in interface.protocols :
-            ecriture_fichier(file, " !\n address-family ipv4 vrf Client_" + interface.client[0] + "\n")
+            nom_client = ""
+            for i in range (0,len(interface.client),2):
+                nom_client += interface.client[i]
+            ecriture_fichier(file, " !\n address-family ipv4 vrf Client_" + nom_client + "\n")
             if "eBGP" in interface.protocols and eBGP == []:
                 eBGP = neighbors_eBGP(list_routers, router.hostname)
             for i in range(compteur, compteur+2-1, 2) :
