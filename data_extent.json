@@ -7,7 +7,7 @@
             "id" : "1.1.1.1",
             "AS" : "100",
             "area" : "0",
-            "neighbors":["R2","R6", "R7","R11"],
+            "neighbors":["R2","R6", "R7"],
             "interfaces" : 
             [
                 {
@@ -33,12 +33,6 @@
                     "protocols" : ["VPN","eBGP"],
                     "connected_to" : "R7",
                     "client" : ["B","250","C","350"]
-                },
-                {
-                    "name" : "GigabitEthernet4/0",
-                    "protocols" : ["VPN","eBGP"],
-                    "connected_to" : "R11",
-                    "client" : ["A","150","B","250","C","350"]   
                 }
             ]
         },
@@ -81,7 +75,7 @@
             "id" : "3.3.3.3",
             "AS" : "100",
             "area" : "0",
-            "neighbors":["R2","R5","R10","R12"],
+            "neighbors":["R2","R5","R10"],
             "interfaces" : 
             [
                 {
@@ -107,12 +101,6 @@
                     "protocols" : ["eBGP","VPN"],
                     "connected_to" : "R10",
                     "client" : ["A","150","B","250"]
-                },
-                {
-                    "name" : "GigabitEthernet4/0",
-                    "protocols" : ["eBGP","VPN"],
-                    "connected_to" : "R12",
-                    "client" : ["C","350"]
                 }
             ]
         },
@@ -276,50 +264,6 @@
             "hostname" : "R10",
             "id" : "10.10.10.10",
             "AS" : "1000",
-            "area" : null,
-            "neighbors":["R3"],
-            "interfaces" : 
-            [
-                {
-                    "name" : "Loopback0",
-                    "protocols" : [],
-                    "connected_to" : null,
-                    "client" : null
-                },
-                {
-                    "name" : "GigabitEthernet1/0",
-                    "protocols" : ["eBGP"],
-                    "connected_to" : "R3",
-                    "client" : null
-                }
-            ]
-        },
-        {
-            "hostname": "R11",
-            "id" : "11.11.11.11",
-            "AS" : "1100",
-            "area" : null,
-            "neighbors":["R1"],
-            "interfaces" : 
-            [
-                {
-                    "name" : "Loopback0",
-                    "protocols" : [],
-                    "connected_to" : null,
-                    "client" : null
-                },
-                {
-                    "name" : "GigabitEthernet1/0",
-                    "protocols" : ["eBGP"],
-                    "connected_to" : "R1",
-                    "client" : null
-                }
-            ]
-        },
-        {
-            "hostname": "R12",
-            "id" : "12.12.12.12",
-            "AS" : "1200",
             "area" : null,
             "neighbors":["R3"],
             "interfaces" : 
