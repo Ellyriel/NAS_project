@@ -12,6 +12,6 @@ Automatisation IPv4 (et IPv6, conservé par rapport au projet GNS3) par rapport 
 
 # Fichier GNS3
 
-Le fichier GNS3 se trouve dans _NAS_GNS3.zip_. Ci-dessous l'aspect du réseau, surnommé WattOuat (à chercher):
+Le fichier GNS3 se trouve dans _NAS_GNS3.zip_. Ci-dessous l'aspect du réseau :
 
 ![Réseau GNS3 du groupe](reseau_final.png)
